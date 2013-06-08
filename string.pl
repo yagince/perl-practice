@@ -19,3 +19,6 @@ if ("hoge" == "hoge") {
 } else {
   print "not....same.....orz\n";
 }
+
+
+print "100*3" - 50; # 100*3は100として扱われる
