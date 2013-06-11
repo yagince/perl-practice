@@ -15,3 +15,10 @@ my %hash2 = ("hoge" => 1,
 
 say $hash2{"hoge"};
 say $hash2{"foo"};
+
+# Key文字を自動的にクオートしてくれる
+my %auto = (a => 1,
+            b => 2);
+
+say $auto{a};
+say $auto{b};
