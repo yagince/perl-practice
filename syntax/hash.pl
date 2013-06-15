@@ -22,3 +22,9 @@ my %auto = (a => 1,
 
 say $auto{a};
 say $auto{b};
+
+
+my %or = (a => 0, b => 1);
+say $or{a} || "nothing"; # => nothing
+say $or{a} // "nothing"; # => 0
+
