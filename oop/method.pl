@@ -20,3 +20,14 @@ Hoge->speak;
 }
 
 Foo->speak;
+
+{ package Bar;
+  our @ISA = ('Hoge');
+  sub speak {
+    my $class = shift;
+    $class->SUPER::speak;
+    say "(called by Bar)";
+  }
+}
+
+Bar->speak;
