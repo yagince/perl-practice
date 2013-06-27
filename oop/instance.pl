@@ -12,9 +12,9 @@ use 5.012;
    ref $self ? $$self : "unnamed";
  }
  sub speak {
-   my $either = shift;
+   my $self = shift;
    my $word = shift;
-   print $either->name, " speak ", $word, "\n";
+   print $self->name, " speak ", $word, "\n";
  }
 }
 
@@ -42,15 +42,24 @@ say "================================================================";
     bless { first_name=>$first_name, last_name=>$last_name, age=>$age }, $class;
   }
   sub full_name{
-    my $either = shift;
-    $either->{first_name}." ".$either->{last_name};
+    my $self = shift;
+    $self->{first_name}." ".$self->{last_name};
   }
   sub age { $_[0]->{age} }
   sub set_age {
-    my $either = shift;
+    my $self = shift;
     my $new_age = shift;
-    $either->{age} = $new_age;
-    $either;
+    $self->{age} = $new_age;
+    $self;
+  }
+  sub first_name {
+    my $self = shift;
+    if (@_) {
+      $self->{first_name} = shift;
+      $self;
+    } else {
+      $self->{first_name}
+    }
   }
 }
 
@@ -58,3 +67,4 @@ my $p = Person->new('taro','yamada',30);
 say $p->full_name;
 say $p->set_age(1000)->age; # 1000
 say $p->age; # 1000
+say $p->first_name("hanako")->first_name;
