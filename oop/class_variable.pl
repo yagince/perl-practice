@@ -9,6 +9,7 @@ use 5.012;
     $NAMES{$self} = $self;
   }
   sub all_names { map { ref($_)." named ".${$_} } values %NAMES }
+  sub all_keys { keys %NAMES }
 }
 
 my $hoge1 = Hoge->new("hoge1");
@@ -17,3 +18,4 @@ my $hoge3 = Hoge->new("hoge3");
 
 my @names = $hoge1->all_names;
 say "@names";
+say $hoge1->all_keys;
