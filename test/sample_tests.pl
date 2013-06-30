@@ -1,6 +1,7 @@
 use 5.012;
 
-use Test::More tests => 4;
+# use Test::More tests => 4;
+use Test::More "no_plan";
 
 ok(1, '1 is true');
 is(2 + 2, 4, 'the sum is 4');

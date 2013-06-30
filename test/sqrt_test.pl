@@ -1,6 +1,7 @@
 use 5.012;
 
-use Test::More tests => 9;
+# use Test::More tests => 9;
+use Test::More "no_plan";
 
 sub test_sub { '10000' }
 
