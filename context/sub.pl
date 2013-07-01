@@ -27,3 +27,19 @@ my $joined_values = defined_values(@ary);
 say $joined_values;
 my @values = defined_values(@ary);
 say "@values";
+
+use Contextual::Return;
+
+sub contextual_return {
+    return (
+        LIST { (1,2,3) }
+        BOOL { 1 }
+        NUM { 1 }
+    );
+}
+
+my @list_context = contextual_return;
+say "@list_context";
+
+my $num_context = 0 + contextual_return;
+say $num_context;
