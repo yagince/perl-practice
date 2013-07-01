@@ -14,3 +14,16 @@ sub hoge {
 hoge(reverse $str); # リストコンテキストになるので、リバースされない
 hoge(scalar reverse $str);
 
+
+# 戻り値のコンテキスト
+sub defined_values {
+    my @tmp_values = grep { defined($_) } @_;
+    return @tmp_values if wantarray;
+    return join(",", @tmp_values);
+}
+
+my @ary = (1,2,undef,3);
+my $joined_values = defined_values(@ary);
+say $joined_values;
+my @values = defined_values(@ary);
+say "@values";
