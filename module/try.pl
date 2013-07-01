@@ -26,15 +26,25 @@ say "================================================================";
   }
 }
 
+use Exception::Class (
+    'X::BarException' => {
+        fields => [ 'bar_name' ]
+    }
+);
+
 use Carp 'croak';
 try {
     # croak( bless \"foo", "Foo" );
-    croak( X::MyException->new( { name => "hoge" } ) );
+    # croak( X::MyException->new( { name => "hoge" } ) );
+    X::BarException->throw( bar_name => "barbarbar" );
 }
 catch {
     my $e = shift;
     if ( $e->isa("X::MyException") ) {
         say $e->get_name;
+    }
+    elsif ( $e->isa('X::BarException') ) {
+        say $e->bar_name;
     }
     else {
         say "other error";
